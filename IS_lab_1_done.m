@@ -79,7 +79,7 @@ P=[x1Training;x2Training];
 
 %--------------------------------------------
 %Desired output vector. Apples: 1 and Pears: -1
-T=[1;1;1;-1;-1]; %Fixed values to match training data
+T=[1;1;1;-1;-1]; %Had to fix values to match training data
 %--------------------------------------------
 
 %% train single perceptron with two inputs and one output
@@ -165,9 +165,6 @@ fprintf('"%d" ', Y_test);
 % Training data matrix (5 samples, each sample = [color roundness])
 PBay = [x1Training; x2Training]';     % transpose → 5×2 matrix
 
-% T MUST be a column vector of labels: [1;1;1;-1;-1]
-% Already defined earlier
-
 % Train Naive Bayes model
 BayesModel = fitcnb(PBay, T);
 
@@ -183,14 +180,14 @@ fprintf('"%d" ', BayesAts);
 fprintf('\n');
 %--------------------------------------------
 
-%Result check
+%For result check
 %--------------------------------------------
-% figure; hold on;
-% scatter(x1Training(1:3), x2Training(1:3), 120, 'r', 'filled');  % apples
-% scatter(x1Training(4:5), x2Training(4:5), 120, 'b', 'filled');  % pears
-% xlabel('Color feature');
-% ylabel('Roundness feature');
-% title('Training Data');
-% legend('Apples','Pears');
-% grid on;
+figure; hold on;
+scatter(x1Training(1:3), x2Training(1:3), 120, 'r', 'filled');  % apples
+ scatter(x1Training(4:5), x2Training(4:5), 120, 'b', 'filled');  % pears
+ xlabel('Color feature');
+ ylabel('Roundness feature');
+ title('Training Data');
+ legend('Apples','Pears');
+ grid on;
 %--------------------------------------------
